@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
+import { ScrollReveal } from './ScrollReveal';
 import { 
   Code2, 
   Lightbulb, 
@@ -38,51 +39,53 @@ export const About: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="mb-10 text-center sm:text-left">
+        <ScrollReveal animation="fade-up" className="mb-10 text-center sm:text-left">
           <span className="inline-block px-3 py-1 rounded-full bg-blue-100/70 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-2">
             About Me
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             More Than Just Code
           </h2>
-        </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: Bio & Core traits */}
-          <div className="lg:col-span-7 space-y-6">
+          <ScrollReveal animation="fade-up" delay={100} className="lg:col-span-7 space-y-6">
             <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
               {personalInfo.aboutText}
             </p>
 
             {/* Trait badges */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-              {traits.map((trait) => {
+              {traits.map((trait, index) => {
                 const Icon = trait.icon;
                 return (
-                  <div
+                  <ScrollReveal
                     key={trait.label}
+                    animation="fade-up"
+                    delay={150 + index * 60}
                     className={`flex items-center gap-2 p-2.5 rounded-xl border font-medium text-xs sm:text-sm text-slate-700 dark:text-slate-200 ${trait.color}`}
                   >
                     <Icon className="w-4 h-4 shrink-0" />
                     <span className="truncate">{trait.label}</span>
-                  </div>
+                  </ScrollReveal>
                 );
               })}
             </div>
 
             {/* Inspirational Quote Card */}
-            <div className="relative mt-6 p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white shadow-xl overflow-hidden border border-slate-700/60">
+            <ScrollReveal animation="fade-up" delay={300} className="relative mt-6 p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white shadow-xl overflow-hidden border border-slate-700/60">
               <div className="text-4xl font-serif text-blue-400/40 select-none leading-none mb-2">“</div>
               <p className="text-base sm:text-lg italic font-medium text-slate-100 pl-4 border-l-2 border-blue-500">
                 {personalInfo.quote}
               </p>
               <div className="text-4xl font-serif text-blue-400/40 select-none leading-none text-right mt-1">”</div>
-            </div>
-          </div>
+            </ScrollReveal>
+          </ScrollReveal>
 
           {/* Right Column: Personal Info Card */}
-          <div className="lg:col-span-5 bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-7 shadow-lg border border-slate-200/80 dark:border-slate-800/80 space-y-4">
+          <ScrollReveal animation="fade-left" delay={150} className="lg:col-span-5 bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-7 shadow-lg border border-slate-200/80 dark:border-slate-800/80 space-y-4">
             
             {/* Name */}
             <div className="flex items-start gap-3.5 pb-3 border-b border-slate-100 dark:border-slate-800">
@@ -191,7 +194,7 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-          </div>
+          </ScrollReveal>
 
         </div>
 

@@ -1,0 +1,5 @@
+# robots.txt for Ranajit Gupta Portfolio
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-blue-nine-26.vercel.app/sitemap.xml

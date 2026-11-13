@@ -9,12 +9,13 @@ import { Experience } from './components/Experience';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { CvModal } from './components/CvModal';
+import { ScrollToTop } from './components/ScrollToTop';
 
 export const AppContent: React.FC = () => {
   const [isCvModalOpen, setIsCvModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f8fafc] text-slate-800 dark:bg-[#0b0f19] dark:text-slate-100 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[#f8fafc] text-slate-800 dark:bg-[#0b0f19] dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
       <Navbar onOpenCvModal={() => setIsCvModalOpen(true)} />
       
       <main className="flex-1">
@@ -27,6 +28,9 @@ export const AppContent: React.FC = () => {
       </main>
 
       <Footer />
+
+      {/* Floating Scroll To Top Button */}
+      <ScrollToTop />
 
       {/* Curriculum Vitae Modal */}
       <CvModal

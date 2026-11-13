@@ -79,3 +79,92 @@
 .font-handwriting {
   font-family: 'Caveat', cursive;
 }
+
+/* Scroll Reveal Animations */
+.reveal-base {
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal-fade-down {
+  opacity: 0;
+  transform: translateY(-24px);
+}
+
+.reveal-fade-left {
+  opacity: 0;
+  transform: translateX(-24px);
+}
+
+.reveal-fade-right {
+  opacity: 0;
+  transform: translateX(24px);
+}
+
+.reveal-fade-in {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) translateX(0) scale(1) !important;
+}
+
+/* Cursor Blink Animation */
+@keyframes cursorBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-cursor-blink {
+  animation: cursorBlink 0.9s ease-in-out infinite;
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-base,
+  .reveal-fade-up,
+  .reveal-fade-down,
+  .reveal-fade-left,
+  .reveal-fade-right,
+  .reveal-fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .animate-cursor-blink {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Disable hover translates and scale under reduced-motion */
+  .transform {
+    transform: none !important;
+  }
+}
+
+/* Fallback: Ensure all content is fully visible if JavaScript is disabled */
+@media (scripting: none) {
+  .reveal-base,
+  .reveal-fade-up,
+  .reveal-fade-down,
+  .reveal-fade-left,
+  .reveal-fade-right,
+  .reveal-fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

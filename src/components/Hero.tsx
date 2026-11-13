@@ -1,5 +1,7 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData';
+import { ScrollReveal } from './ScrollReveal';
+import { useTypewriter } from '../hooks/useTypewriter';
 import { 
   ArrowRight, 
   FolderGit2, 
@@ -13,6 +15,21 @@ import {
 } from 'lucide-react';
 
 export const Hero: React.FC = () => {
+  const roles = [
+    'Full-Stack Developer',
+    'IT Undergraduate',
+    'React & Frontend Specialist',
+    'REST API & Backend Builder',
+    'Problem Solver & Open Source Enthusiast',
+  ];
+
+  const { text: typedRole } = useTypewriter({
+    words: roles,
+    typingSpeed: 80,
+    deletingSpeed: 40,
+    pauseDuration: 1800,
+  });
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -29,7 +46,7 @@ export const Hero: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           {/* Left Column: Intro & Call to Action */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <ScrollReveal animation="fade-up" delay={50} className="lg:col-span-7 space-y-6 text-center lg:text-left">
             {/* Pill Greeting */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 text-xs sm:text-sm font-semibold border border-blue-200/60 dark:border-blue-800/60 shadow-sm">
               <span className="text-base">👋</span>
@@ -44,10 +61,18 @@ export const Hero: React.FC = () => {
               </span>
             </h1>
 
-            {/* Title / Role */}
-            <p className="text-lg sm:text-xl font-semibold text-slate-700 dark:text-slate-200">
-              {personalInfo.tagline}
-            </p>
+            {/* Title / Role with Typing Animation */}
+            <div 
+              className="flex items-center justify-center lg:justify-start gap-1.5 text-lg sm:text-xl font-semibold text-slate-700 dark:text-slate-200 min-h-[32px]"
+              aria-label={`Role: ${personalInfo.tagline}`}
+            >
+              <span className="text-blue-600 dark:text-blue-400 font-bold select-none">&gt;</span>
+              <span className="text-slate-800 dark:text-slate-100">{typedRole}</span>
+              <span 
+                className="inline-block w-[3px] h-5 sm:h-6 bg-blue-600 dark:bg-blue-400 rounded-sm animate-cursor-blink ml-0.5" 
+                aria-hidden="true" 
+              />
+            </div>
 
             {/* Short Bio */}
             <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
@@ -57,16 +82,18 @@ export const Hero: React.FC = () => {
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
               <button
+                type="button"
                 onClick={() => scrollTo('projects')}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 overflow-hidden"
               >
                 <span>View My Work</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </button>
 
               <button
+                type="button"
                 onClick={() => scrollTo('contact')}
-                className="px-6 py-3 rounded-xl bg-white dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-slate-800 dark:text-slate-100 font-semibold text-sm border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow transition-all"
+                className="px-6 py-3 rounded-xl bg-white dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-slate-800 dark:text-slate-100 font-semibold text-sm border border-slate-200 dark:border-slate-700 hover:border-blue-400/60 dark:hover:border-blue-500/60 shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
                 Let's Connect
               </button>
@@ -78,51 +105,49 @@ export const Hero: React.FC = () => {
                 href={personalInfo.socialLinks.github}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="GitHub"
-                className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-all shadow-sm"
+                aria-label="GitHub Profile"
+                className="group w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-slate-900 hover:text-white dark:hover:bg-slate-700 dark:hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-500/25 transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
-                <Github className="w-5 h-5" />
+                <Github className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
               </a>
               <a
                 href={personalInfo.socialLinks.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="LinkedIn"
-                className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-all shadow-sm"
+                aria-label="LinkedIn Profile"
+                className="group w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/30 transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
               </a>
               <a
                 href={personalInfo.socialLinks.email}
-                aria-label="Email"
-                className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-all shadow-sm"
+                aria-label="Email Ranajit Gupta"
+                className="group w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-rose-600 hover:text-white dark:hover:bg-rose-600 dark:hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-rose-500/30 transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
               </a>
               <a
                 href={personalInfo.socialLinks.whatsapp}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="WhatsApp"
-                className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white transition-all shadow-sm"
+                aria-label="WhatsApp Contact"
+                className="group w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/30 transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
               >
-                <MessageCircle className="w-5 h-5" />
+                <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
               </a>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Right Column: Hero Graphic matching mockup */}
-          <div className="lg:col-span-5 relative flex justify-center">
+          <ScrollReveal animation="fade-left" delay={150} className="lg:col-span-5 relative flex justify-center">
             {/* Visual Frame */}
             <div className="relative w-full max-w-[380px] sm:max-w-[420px] aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 bg-slate-900 group">
               <img
-                src="/hero-person.jpeg"
-                alt="Ranajit Gupta"
+                src="/hero-person.jpg"
+                alt="Ranajit Gupta - Full Stack Developer"
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = "/hero-person.jpg";
-                }}
+                loading="eager"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
             </div>
@@ -131,14 +156,14 @@ export const Hero: React.FC = () => {
             <div className="hidden sm:block absolute -top-4 -right-4 bg-amber-50 dark:bg-amber-950/80 border border-amber-200 dark:border-amber-800/60 text-amber-900 dark:text-amber-200 px-3.5 py-1.5 rounded-lg shadow-md rotate-3 font-handwriting text-base">
               <span>Better Code, A Brighter Tomorrow ✨</span>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Bottom Quick Metrics Bar */}
         <div className="mt-12 pt-6 border-t border-slate-200/80 dark:border-slate-800/80">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             
-            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-850/60 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 shadow-sm">
+            <ScrollReveal animation="fade-up" delay={250} className="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-850/60 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 shadow-sm">
               <div className="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                 <FolderGit2 className="w-5 h-5" />
               </div>
@@ -146,9 +171,9 @@ export const Hero: React.FC = () => {
                 <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight">3+</p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Projects</p>
               </div>
-            </div>
+            </ScrollReveal>
 
-            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 shadow-sm">
+            <ScrollReveal animation="fade-up" delay={350} className="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 shadow-sm">
               <div className="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
                 <Briefcase className="w-5 h-5" />
               </div>
@@ -156,9 +181,9 @@ export const Hero: React.FC = () => {
                 <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight">1</p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Internship</p>
               </div>
-            </div>
+            </ScrollReveal>
 
-            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 shadow-sm">
+            <ScrollReveal animation="fade-up" delay={450} className="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 shadow-sm">
               <div className="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                 <GraduationCap className="w-5 h-5" />
               </div>
@@ -166,9 +191,9 @@ export const Hero: React.FC = () => {
                 <p className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white leading-tight">B.Tech IT</p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">2023 – 2027</p>
               </div>
-            </div>
+            </ScrollReveal>
 
-            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 shadow-sm">
+            <ScrollReveal animation="fade-up" delay={550} className="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 shadow-sm">
               <div className="w-10 h-10 rounded-lg bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center">
                 <MapPin className="w-5 h-5" />
               </div>
@@ -176,7 +201,7 @@ export const Hero: React.FC = () => {
                 <p className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white leading-tight truncate">Giridih, Jharkhand</p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">India</p>
               </div>
-            </div>
+            </ScrollReveal>
 
           </div>
         </div>

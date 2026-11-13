@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
+import { ScrollReveal } from './ScrollReveal';
 import { Github, Linkedin, Mail, MessageCircle, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -67,7 +68,7 @@ export const Contact: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Contact Banner Card matching design */}
-        <div className="relative rounded-3xl bg-[#0f172a] text-white p-8 sm:p-12 lg:p-14 overflow-hidden shadow-2xl border border-slate-800">
+        <ScrollReveal animation="fade-up" className="relative rounded-3xl bg-[#0f172a] text-white p-8 sm:p-12 lg:p-14 overflow-hidden shadow-2xl border border-slate-800">
           
           {/* Background subtle radial glow */}
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
@@ -76,7 +77,7 @@ export const Contact: React.FC = () => {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Content */}
-            <div className="lg:col-span-5 space-y-6">
+            <ScrollReveal animation="fade-up" delay={100} className="lg:col-span-5 space-y-6">
               <span className="inline-block px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider border border-blue-500/30">
                 Get In Touch
               </span>
@@ -95,41 +96,41 @@ export const Contact: React.FC = () => {
                   href={personalInfo.socialLinks.github}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="GitHub"
-                  className="w-10 h-10 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-md"
+                  aria-label="GitHub Profile"
+                  className="group w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-500/20 transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
                 >
-                  <Github className="w-5 h-5" />
+                  <Github className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
                 </a>
                 <a
                   href={personalInfo.socialLinks.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="LinkedIn"
-                  className="w-10 h-10 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-md"
+                  aria-label="LinkedIn Profile"
+                  className="group w-10 h-10 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-300 hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/30 transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
                 </a>
                 <a
                   href={personalInfo.socialLinks.email}
-                  aria-label="Email"
-                  className="w-10 h-10 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-md"
+                  aria-label="Email Ranajit Gupta"
+                  className="group w-10 h-10 rounded-full bg-slate-800 hover:bg-rose-600 flex items-center justify-center text-slate-300 hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-rose-500/30 transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
                 >
-                  <Mail className="w-5 h-5" />
+                  <Mail className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
                 </a>
                 <a
                   href={personalInfo.socialLinks.whatsapp}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="WhatsApp"
-                  className="w-10 h-10 rounded-full bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-md"
+                  aria-label="WhatsApp Contact"
+                  className="group w-10 h-10 rounded-full bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/30 transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
                 >
-                  <MessageCircle className="w-5 h-5" />
+                  <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
                 </a>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right Content: Contact Form */}
-            <div className="lg:col-span-7">
+            <ScrollReveal animation="fade-up" delay={200} className="lg:col-span-7">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -182,13 +183,13 @@ export const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="group w-full sm:w-auto px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 hover:shadow-xl hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] text-white font-semibold text-sm shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
                 >
                   <span>{status === 'sending' ? 'Sending...' : 'Send Message'}</span>
-                  <Send className="w-4 h-4" />
+                  <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform duration-200" />
                 </button>
               </form>
-            </div>
+            </ScrollReveal>
 
           </div>
 
@@ -197,7 +198,7 @@ export const Contact: React.FC = () => {
             <span>Good Code<br />Brighter Tomorrow</span>
           </div>
 
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>
