@@ -14,15 +14,6 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
     window.print();
   };
 
-  const handleDownloadPdf = () => {
-    // Check if resume.pdf exists, else open print dialogue
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = `${personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
@@ -157,13 +148,14 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
             Verified & Updated for {new Date().getFullYear()}
           </p>
 
-          <button
-            onClick={handleDownloadPdf}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md shadow-blue-500/25 transition-all"
+          <a
+            href="/resume.pdf"
+            download={`${personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md shadow-blue-500/25 hover:shadow-lg hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all"
           >
             <span>Download PDF</span>
             <Download className="w-4 h-4" />
-          </button>
+          </a>
         </div>
       </div>
     </div>
