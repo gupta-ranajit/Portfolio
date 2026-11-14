@@ -168,3 +168,174 @@
     transition: none !important;
   }
 }
+
+/* ===== Hanging Lamp Theme Toggle Animations ===== */
+
+@keyframes lamp-pull {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(10px); }
+  55%  { transform: translateY(-4px); }
+  75%  { transform: translateY(3px); }
+  90%  { transform: translateY(-1px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes lamp-sway {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-3deg); }
+  45%  { transform: rotate(2.5deg); }
+  65%  { transform: rotate(-1.5deg); }
+  80%  { transform: rotate(0.8deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes bulb-flicker {
+  0%, 100% { opacity: 1; }
+  10%       { opacity: 0.6; }
+  20%       { opacity: 1; }
+  30%       { opacity: 0.8; }
+  40%       { opacity: 1; }
+}
+
+.lamp-pull-anim {
+  animation: lamp-pull 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.lamp-sway-anim {
+  animation: lamp-sway 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transform-origin: top center;
+}
+
+.bulb-flicker-anim {
+  animation: bulb-flicker 0.3s ease-in-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lamp-pull-anim,
+  .lamp-sway-anim,
+  .bulb-flicker-anim {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   Skills Marquee — Infinite horizontal scroll (left to right)
+   ============================================================ */
+
+@keyframes marquee-ltr {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 3)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="marquee-ltr"] {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   About Section — Quote Carousel Transitions
+   ============================================================ */
+
+/* Exit: slide up and fade out */
+.quote-exit {
+  animation: quoteExit 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Enter: slide in from below and fade in */
+.quote-enter {
+  animation: quoteEnter 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Idle: fully visible, no animation */
+.quote-idle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes quoteExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes quoteEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   About Section — Trait Card Gradient Wave
+   Each card glows with a dark-blue shimmer in staggered order,
+   cycling through all four cards seamlessly.
+   ============================================================ */
+
+/* The total animation cycle = 4 cards × 1.6s per card = 6.4s */
+/* Each card's wave-on window = 1.6s, offset by card index × 1.6s */
+
+.trait-glow-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.0) 0%,
+    rgba(37, 99, 235, 0.18) 40%,
+    rgba(99, 102, 241, 0.22) 60%,
+    rgba(37, 99, 235, 0.0) 100%
+  );
+  box-shadow:
+    inset 0 0 12px rgba(59, 130, 246, 0.25),
+    0 0 10px rgba(59, 130, 246, 0.15);
+}
+
+/* Wave timing: each card glows for ~1.4s within a 6.4s total cycle */
+.trait-wave-0 .trait-glow-overlay { animation: traitGlow 6.4s ease-in-out infinite; animation-delay: 0s; }
+.trait-wave-1 .trait-glow-overlay { animation: traitGlow 6.4s ease-in-out infinite; animation-delay: 1.6s; }
+.trait-wave-2 .trait-glow-overlay { animation: traitGlow 6.4s ease-in-out infinite; animation-delay: 3.2s; }
+.trait-wave-3 .trait-glow-overlay { animation: traitGlow 6.4s ease-in-out infinite; animation-delay: 4.8s; }
+
+@keyframes traitGlow {
+  /* Active window is roughly 0% – 22% of cycle, rest is off */
+  0%   { opacity: 0; }
+  3%   { opacity: 1; }
+  18%  { opacity: 1; }
+  25%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Border highlight during wave */
+.trait-wave-0,
+.trait-wave-1,
+.trait-wave-2,
+.trait-wave-3 {
+  transition: box-shadow 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quote-exit,
+  .quote-enter,
+  .quote-idle {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .trait-glow-overlay {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}

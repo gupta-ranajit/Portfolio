@@ -172,6 +172,42 @@ export const TechIcon: React.FC<TechIconProps> = ({ name, className = "w-7 h-7",
         </svg>
       );
 
+    case 'mongodb':
+      return (
+        <svg width={size} height={size} viewBox="0 0 24 24" className={className}>
+          <path d="M12 2C9.5 2 7 5 7 9c0 3.5 2.3 6.5 4.5 8.5.3.3.5.5.5.5s.2-.2.5-.5C14.7 15.5 17 12.5 17 9c0-4-2.5-7-5-7z" fill="#47A248"/>
+          <path d="M12 2v18.5" stroke="#47A248" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M12 20.5c0 0 0 1.5 0 1.5" stroke="#47A248" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+
+    case 'postman':
+      return (
+        <svg width={size} height={size} viewBox="0 0 24 24" className={className}>
+          <circle cx="12" cy="12" r="10" fill="#FF6C37"/>
+          <path d="M17 12a5 5 0 1 1-5-5" stroke="white" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+          <path d="M14 7l3-3M17 4l-3 3" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+          <circle cx="12" cy="12" r="2" fill="white"/>
+        </svg>
+      );
+
+    case 'canva':
+      return (
+        <svg width={size} height={size} viewBox="0 0 24 24" className={className}>
+          <circle cx="12" cy="12" r="10" fill="#00C4CC"/>
+          <text x="12" y="16.5" fill="white" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">C</text>
+        </svg>
+      );
+
+    case 'wordpress':
+      return (
+        <svg width={size} height={size} viewBox="0 0 24 24" className={className}>
+          <circle cx="12" cy="12" r="10" fill="#21759B"/>
+          <path d="M3.5 12c0-4.7 3.8-8.5 8.5-8.5m-6 1.5l5.5 14.5m2.5-14.5l2 6-3 8M12 20.5c-4.7 0-8.5-3.8-8.5-8.5m12.5 7l-3-9 2-5" stroke="white" strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+          <text x="12" y="15.5" fill="white" fontSize="7" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">W</text>
+        </svg>
+      );
+
     default:
       return (
         <div className={`flex items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 font-bold ${className}`}>

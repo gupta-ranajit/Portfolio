@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useTheme } from '../context/ThemeContext';
 import { personalInfo } from '../data/portfolioData';
-import { Sun, Moon, Download, Menu, X } from 'lucide-react';
+import { Download, Menu, X } from 'lucide-react';
+import { LampThemeToggle } from './LampThemeToggle';
 
 interface NavbarProps {
   onOpenCvModal: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenCvModal }) => {
-  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -152,18 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCvModal }) => {
 
         {/* Right Actions: Theme Toggle & Download CV */}
         <div className="hidden sm:flex items-center gap-3">
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:-translate-y-0.5 active:translate-y-0 transition-all border border-transparent hover:border-slate-200 dark:hover:border-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-          >
-            {theme === 'dark' ? (
-              <Sun className="w-5 h-5 text-amber-400 animate-spin-slow" />
-            ) : (
-              <Moon className="w-5 h-5 text-slate-700" />
-            )}
-          </button>
+          <LampThemeToggle />
 
           <button
             type="button"
@@ -177,18 +165,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCvModal }) => {
 
         {/* Mobile Hamburger & Theme Button */}
         <div className="flex sm:hidden items-center gap-2">
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-          >
-            {theme === 'dark' ? (
-              <Sun className="w-5 h-5 text-amber-400" />
-            ) : (
-              <Moon className="w-5 h-5 text-slate-700" />
-            )}
-          </button>
+          <LampThemeToggle />
 
           <button
             type="button"

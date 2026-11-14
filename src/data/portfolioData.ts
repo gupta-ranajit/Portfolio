@@ -45,16 +45,24 @@ export const skills: Skill[] = [
   { name: "HTML", category: ["All", "Languages", "Frontend"], iconKey: "html", color: "#e34f26" },
   { name: "CSS", category: ["All", "Languages", "Frontend"], iconKey: "css", color: "#1572b6" },
 
-  // Frameworks / Libraries / Tools
+  // Frameworks / Libraries
   { name: "React", category: ["All", "Frontend"], iconKey: "react", color: "#61dafb" },
   { name: "Tailwind CSS", category: ["All", "Frontend"], iconKey: "tailwind", color: "#06b6d4" },
   { name: "Flask", category: ["All", "Backend"], iconKey: "flask", color: "#000000" },
   { name: "REST APIs", category: ["All", "Backend"], iconKey: "api", color: "#8b5cf6" },
   { name: "Flutter", category: ["All", "Mobile"], iconKey: "flutter", color: "#02569b" },
+
+  // Databases
   { name: "MySQL", category: ["All", "Database"], iconKey: "mysql", color: "#4479a1" },
   { name: "PostgreSQL", category: ["All", "Database"], iconKey: "postgresql", color: "#4169e1" },
+  { name: "MongoDB", category: ["All", "Database"], iconKey: "mongodb", color: "#47A248" },
+
+  // Tools
   { name: "Git", category: ["All", "Tools"], iconKey: "git", color: "#f05032" },
   { name: "VS Code", category: ["All", "Tools"], iconKey: "vscode", color: "#007acc" },
+  { name: "Postman", category: ["All", "Tools"], iconKey: "postman", color: "#FF6C37" },
+  { name: "Canva", category: ["All", "Tools"], iconKey: "canva", color: "#00C4CC" },
+  { name: "WordPress", category: ["All", "Tools"], iconKey: "wordpress", color: "#21759B" },
 ];
 
 export const projects: Project[] = [
