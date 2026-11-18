@@ -7,6 +7,7 @@ import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Experience } from './components/Experience';
 import { Contact } from './components/Contact';
+import { ProjectInquiry } from './components/ProjectInquiry';
 import { Footer } from './components/Footer';
 import { CvModal } from './components/CvModal';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -25,6 +26,7 @@ export const AppContent: React.FC = () => {
         <Projects />
         <Experience />
         <Contact />
+        <ProjectInquiry />
       </main>
 
       <Footer />
